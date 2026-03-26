@@ -23,15 +23,15 @@ document.addEventListener("DOMContentLoaded", function() {
             el.addEventListener('mouseenter', () => {
                 gsap.to(cursor, {
                     scale: 1.5,
-                    borderColor: 'rgba(212, 175, 55, 0.5)',
-                    backgroundColor: 'rgba(212, 175, 55, 0.1)',
+                    borderColor: 'rgba(229, 193, 88, 0.5)',
+                    backgroundColor: 'rgba(229, 193, 88, 0.1)',
                     duration: 0.3
                 });
             });
             el.addEventListener('mouseleave', () => {
                 gsap.to(cursor, {
                     scale: 1,
-                    borderColor: '#d4af37',
+                    borderColor: '#e5c158',
                     backgroundColor: 'transparent',
                     duration: 0.3
                 });
@@ -42,28 +42,32 @@ document.addEventListener("DOMContentLoaded", function() {
     // --- Hero Animations ---
     const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
     
-    tl.from(".header", { y: -80, opacity: 0, duration: 0.8 })
-      .from(".hero-title span", { 
-          y: 100, 
+    // Use from() instead of set+to so elements are visible by default
+    tl.from(".hero-title span", { 
+          y: 30,
           opacity: 0, 
-          duration: 1, 
+          duration: 1.2, 
           stagger: 0.1,
           ease: "power4.out"
-      }, "-=0.4")
-      .from(".hero-tagline", { y: 40, opacity: 0, duration: 0.8 }, "-=0.6")
-      .from(".hero-cta", { scale: 0.8, opacity: 0, duration: 0.6 }, "-=0.4");
+      }, "+=0.3")
+      .from(".hero-tagline", { y: 30, opacity: 0, duration: 1 }, "-=0.8")
+      .from(".hero-cta", { y: 30, opacity: 0, duration: 0.8 }, "-=0.6")
+      .from(".hero-navigation", { opacity: 0, y: 30, duration: 0.8 }, "-=0.4")
+      .from(".header", { y: -80, opacity: 0, duration: 1 }, "-=1.2");
 
     // Hero Parallax
-    gsap.to(".hero-bg", {
-        yPercent: 20,
-        ease: "none",
-        scrollTrigger: {
-            trigger: ".hero-section",
-            start: "top top",
-            end: "bottom top",
-            scrub: true
-        }
-    });
+    if (window.innerWidth > 768) {
+        gsap.to(".hero-bg", {
+            yPercent: 20,
+            ease: "none",
+            scrollTrigger: {
+                trigger: ".hero-section",
+                start: "top top",
+                end: "bottom top",
+                scrub: true
+            }
+        });
+    }
 
     // --- Section Animations ---
     const sections = document.querySelectorAll('section');

@@ -1,7 +1,7 @@
 /* Root Variables */
 :root {
     --primary-color: #0d3b3a; /* Dark green from logo/design */
-    --secondary-color: #d4af37; /* Gold/Yellow from design */
+    --secondary-color: #e5c158; /* Warmer Gold from design */
     --bg-light: #f8f9fa;
     --text-dark: #212529;
     --text-muted: #6c757d;
@@ -67,6 +67,7 @@ h1, h2, h3, h4, h5, h6 {
     left: 0;
     width: 100%;
     padding: 20px 0;
+    opacity: 1; /* Ensure visible by default */
 }
 
 .header.nav-up {
@@ -83,7 +84,8 @@ h1, h2, h3, h4, h5, h6 {
 /* Ensure icons/logo are visible on transparent bg */
 .header .navbar-brand .logo,
 .header .header-tools a,
-.header .menu-toggle span {
+.header .hamburger-lines span,
+.header .menu-text {
     transition: all 0.3s ease;
 }
 
@@ -91,12 +93,22 @@ h1, h2, h3, h4, h5, h6 {
    But since we use white bg on scroll, let's keep them dark 
    or handle based on section. For now, keep it clean. */
 
+.header .header-tools a {
+    color: #fff !important; /* Default white */
+}
+
 .header.nav-down .header-tools a {
     color: var(--text-dark) !important;
 }
 
 .navbar-brand .logo {
-    height: 50px;
+    height: 70px;
+    object-fit: contain;
+    transition: all 0.3s ease;
+}
+
+.header.nav-down .navbar-brand .logo {
+    height: 55px; /* Slightly smaller on scroll */
 }
 
 /* Hamburger Menu Icon */
@@ -107,28 +119,59 @@ h1, h2, h3, h4, h5, h6 {
     padding: 10px;
     z-index: 1101;
     display: flex;
+    align-items: center;
+    gap: 12px;
+    transition: all 0.3s ease;
+}
+
+.menu-text {
+    font-family: var(--font-primary);
+    font-weight: 500;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #fff; /* Default white for Hero */
+}
+
+.hamburger-lines {
+    display: flex;
     flex-direction: column;
     gap: 6px;
 }
 
-.menu-toggle span {
+.hamburger-lines span {
     display: block;
-    width: 30px;
-    height: 2px;
-    background-color: var(--text-dark);
+    width: 25px;
+    height: 1.5px;
+    background-color: #fff; /* Default white for Hero */
     transition: all 0.3s ease;
 }
 
-.menu-toggle.active span:nth-child(1) {
-    transform: translateY(8px) rotate(45deg);
+/* Nav Down States */
+.header.nav-down .menu-text,
+.header.nav-down .hamburger-lines span {
+    background-color: var(--text-dark);
 }
 
-.menu-toggle.active span:nth-child(2) {
+.header.nav-down .menu-text {
+    background-color: transparent;
+    color: var(--text-dark);
+}
+
+.header.nav-down .hamburger-lines span {
+    background-color: var(--text-dark);
+}
+
+.menu-toggle.active .hamburger-lines span:nth-child(1) {
+    transform: translateY(7.5px) rotate(45deg);
+}
+
+.menu-toggle.active .hamburger-lines span:nth-child(2) {
     opacity: 0;
 }
 
-.menu-toggle.active span:nth-child(3) {
-    transform: translateY(-8px) rotate(-45deg);
+.menu-toggle.active .hamburger-lines span:nth-child(3) {
+    transform: translateY(-7.5px) rotate(-45deg);
 }
 
 /* Fullscreen Overlay Menu */
@@ -225,12 +268,10 @@ h1, h2, h3, h4, h5, h6 {
 /* Hero Section */
 .hero-section {
     height: 100vh;
-    min-height: 600px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    min-height: 700px;
     overflow: hidden;
     background-color: #000;
+    position: relative;
 }
 
 .hero-bg {
@@ -238,11 +279,12 @@ h1, h2, h3, h4, h5, h6 {
     top: 0;
     left: 0;
     width: 100%;
-    height: 120%; /* Increased height for parallax */
+    height: 120%; /* For GSAP Parallax */
     background-size: cover;
-    background-position: center;
+    background-position: center 20%; /* Adjust to keep subject's face/upper body in view */
+    background-repeat: no-repeat;
     z-index: 1;
-    opacity: 0.7;
+    opacity: 0.8; /* Slightly higher for better vibrancy */
 }
 
 .hero-overlay {
@@ -251,21 +293,65 @@ h1, h2, h3, h4, h5, h6 {
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(to bottom, rgba(0,0,0,0.2), rgba(0,0,0,0.5));
+    background: linear-gradient(to bottom, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.5) 50%, rgba(0,0,0,0.7) 100%);
     z-index: 2;
 }
 
-.hero-section .container {
+@media (max-width: 991.98px) {
+    .hero-title {
+        font-size: 3.5rem;
+    }
+}
+
+@media (max-width: 767.98px) {
+    .hero-section {
+        min-height: 100vh; /* Keep full screen on mobile for premium feel */
+    }
+    .hero-bg {
+        background-position: center center; /* More centered on mobile */
+        height: 100%; /* Reduce parallax depth on mobile for better performance */
+    }
+    .hero-title {
+        font-size: 2.2rem;
+        margin-bottom: 1rem;
+    }
+    .hero-tagline {
+        font-size: 0.85rem;
+        letter-spacing: 2px;
+    }
+    .hero-cta {
+        padding: 12px 30px !important;
+        font-size: 0.8rem !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-title {
+        font-size: 1.8rem;
+    }
+    .hero-title span {
+        display: block; /* Stack words for better fit on small mobile */
+    }
+}
+
+.hero-section .container.hero-content-wrapper {
     position: relative;
     z-index: 3;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .hero-title {
+    font-family: var(--font-heading);
     font-size: 5rem;
-    font-weight: 700;
-    margin-bottom: 1.5rem;
+    font-weight: 500; /* Medium weight for cinematic look */
+    margin-bottom: 0.2rem; /* Even smaller margin */
     color: var(--secondary-color);
-    overflow: hidden;
+    letter-spacing: -1px;
+    opacity: 1; /* Ensure visible by default */
 }
 
 .hero-title span {
@@ -273,8 +359,70 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .hero-tagline {
-    font-size: 1.5rem;
-    letter-spacing: 2px;
+    font-size: 1.2rem; /* Larger */
+    letter-spacing: 5px; /* More spacing for elegance */
+    text-transform: uppercase;
+    color: #fff !important;
+    margin-bottom: 2rem; /* More margin to separate from button */
+    font-weight: 400;
+    opacity: 1; /* Ensure visible by default */
+}
+
+/* Button Gold */
+.btn-gold {
+    background-color: var(--secondary-color);
+    color: var(--primary-color) !important;
+    border: none;
+    font-weight: 600;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+    opacity: 1; /* Ensure visible by default */
+}
+
+.btn-gold:hover {
+    background-color: #c4a02d;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(212, 175, 55, 0.4);
+}
+
+/* Hero Navigation Arrows */
+.hero-navigation {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 100%;
+    transform: translateY(-50%);
+    display: flex;
+    justify-content: space-between;
+    padding: 0 40px;
+    z-index: 10;
+    pointer-events: none;
+    opacity: 1; /* Ensure visible by default */
+}
+
+.hero-prev, .hero-next {
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 1.2rem;
+    cursor: pointer;
+    pointer-events: auto;
+    opacity: 0.6;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.hero-prev:hover, .hero-next:hover {
+    opacity: 1;
+    transform: scale(1.2);
+}
+
+@media (max-width: 768px) {
+    .hero-navigation {
+        padding: 0 20px;
+    }
 }
 
 /* WhatsApp Floating Button */
