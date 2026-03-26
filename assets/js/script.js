@@ -40,13 +40,29 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 
     // --- Hero Animations ---
-    const heroTimeline = gsap.timeline();
-    heroTimeline.to('.gsap-reveal-text', {
-        opacity: 1,
-        y: 0,
-        duration: 1,
-        stagger: 0.3,
-        ease: 'power3.out'
+    const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
+    
+    tl.from(".header", { y: -80, opacity: 0, duration: 0.8 })
+      .from(".hero-title span", { 
+          y: 100, 
+          opacity: 0, 
+          duration: 1, 
+          stagger: 0.1,
+          ease: "power4.out"
+      }, "-=0.4")
+      .from(".hero-tagline", { y: 40, opacity: 0, duration: 0.8 }, "-=0.6")
+      .from(".hero-cta", { scale: 0.8, opacity: 0, duration: 0.6 }, "-=0.4");
+
+    // Hero Parallax
+    gsap.to(".hero-bg", {
+        yPercent: 20,
+        ease: "none",
+        scrollTrigger: {
+            trigger: ".hero-section",
+            start: "top top",
+            end: "bottom top",
+            scrub: true
+        }
     });
 
     // --- Section Animations ---
@@ -69,7 +85,7 @@ document.addEventListener("DOMContentLoaded", function() {
             });
         }
 
-        if (title) {
+        if (title && !section.classList.contains('hero-section')) {
             gsap.from(title, {
                 scrollTrigger: {
                     trigger: section,
@@ -85,21 +101,66 @@ document.addEventListener("DOMContentLoaded", function() {
     });
 
     // --- Product Cards Animation ---
-    const productCards = document.querySelectorAll('.product-card');
-    productCards.forEach((card, index) => {
+    gsap.utils.toArray(".product-card").forEach((card, i) => {
         gsap.from(card, {
             scrollTrigger: {
                 trigger: card,
-                start: 'top 90%',
-                toggleActions: 'play none none none'
+                start: "top 85%",
+                toggleActions: "play none none none"
             },
-            y: 50,
+            y: 60,
             opacity: 0,
-            duration: 0.8,
-            delay: index % 3 * 0.2, // Stagger effect
-            ease: 'power2.out'
+            duration: 0.7,
+            delay: (i % 3) * 0.12
+        });
+
+        // 3D Tilt Effect on Hover
+        card.addEventListener("mousemove", (e) => {
+            const rect = card.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            const centerX = rect.width / 2;
+            const centerY = rect.height / 2;
+            const rotateX = (y - centerY) / 10;
+            const rotateY = (centerX - x) / 10;
+
+            gsap.to(card, {
+                rotateX: rotateX,
+                rotateY: rotateY,
+                scale: 1.05,
+                duration: 0.5,
+                ease: "power2.out",
+                perspective: 1000
+            });
+        });
+
+        card.addEventListener("mouseleave", () => {
+            gsap.to(card, {
+                rotateX: 0,
+                rotateY: 0,
+                scale: 1,
+                duration: 0.5,
+                ease: "power2.out"
+            });
         });
     });
+
+    // --- Infinite Marquee ---
+    const tickerWrapper = document.querySelector('.ticker-wrapper');
+    const tickerContent = document.querySelector('.ticker-content');
+    
+    if (tickerWrapper && tickerContent) {
+        // Clone content for seamless loop
+        const clone = tickerContent.cloneNode(true);
+        tickerWrapper.appendChild(clone);
+
+        gsap.to([tickerContent, clone], {
+            xPercent: -100,
+            repeat: -1,
+            duration: 20,
+            ease: "none"
+        });
+    }
 
     // --- Smooth Scrolling for anchor links ---
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
