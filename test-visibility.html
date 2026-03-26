@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Visibility - Haddasa</title>
+    <style>
+        body { margin: 0; padding: 20px; font-family: Arial; background: #333; }
+        .test-box {
+            background: white;
+            padding: 30px;
+            margin: 20px 0;
+            border: 3px solid #e5c158;
+        }
+        .hero-test {
+            min-height: 400px;
+            background: url('assets/img/pexels-betusmusum-6594342.png') center/cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-align: center;
+            padding: 40px;
+        }
+        .hero-test h1 {
+            font-size: 3rem;
+            color: #e5c158;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+        }
+        .logo-test img {
+            max-height: 100px;
+            background: white;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="test-box">
+        <h2>✅ Test 1: Logo</h2>
+        <div class="logo-test">
+            <img src="assets/img/logo.png" alt="Logo">
+        </div>
+        <p>Jika logo terlihat di atas, file logo.png ada dan berfungsi</p>
+    </div>
+
+    <div class="test-box">
+        <h2>✅ Test 2: Background Image</h2>
+        <div class="hero-test">
+            <div>
+                <h1>New Swaroski Collections</h1>
+                <p style="letter-spacing: 5px;">COLLECTIONS</p>
+                <button style="background: #e5c158; border: none; padding: 15px 40px; font-size: 1rem; cursor: pointer;">
+                    See All Collection Series
+                </button>
+            </div>
+        </div>
+        <p>Jika gambar background dan teks terlihat di atas, semua asset bekerja dengan baik</p>
+    </div>
+
+    <div class="test-box">
+        <h2>✅ Test 3: GSAP Library</h2>
+        <p id="gsap-status">Checking GSAP...</p>
+    </div>
+
+    <div class="test-box">
+        <h2>✅ Test 4: Menu Toggle</h2>
+        <button id="test-menu-btn" style="background: #0d3b3a; color: white; border: none; padding: 15px 30px; cursor: pointer;">
+            Klik untuk Test Menu
+        </button>
+        <div id="test-menu" style="display: none; margin-top: 20px; padding: 20px; background: #f0f0f0;">
+            <ul style="list-style: none; padding: 0;">
+                <li><a href="index.html" style="font-size: 2rem; text-decoration: none; color: #0d3b3a;">Home</a></li>
+                <li><a href="shop.html" style="font-size: 2rem; text-decoration: none; color: #0d3b3a;">Shop</a></li>
+                <li><a href="collections.html" style="font-size: 2rem; text-decoration: none; color: #0d3b3a;">Collections</a></li>
+            </ul>
+        </div>
+        <p>Jika menu muncul saat diklik tombol, JavaScript berfungsi dengan baik</p>
+    </div>
+
+    <!-- Test GSAP -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    
+    <script>
+        // Test GSAP
+        const gsapStatus = document.getElementById('gsap-status');
+        if (typeof gsap !== 'undefined') {
+            gsapStatus.innerHTML = '✅ GSAP loaded successfully! Version: ' + gsap.version;
+            gsapStatus.style.color = 'green';
+        } else {
+            gsapStatus.innerHTML = '❌ GSAP NOT loaded! Check internet connection.';
+            gsapStatus.style.color = 'red';
+        }
+
+        // Test Menu Toggle
+        document.getElementById('test-menu-btn').addEventListener('click', function() {
+            const menu = document.getElementById('test-menu');
+            menu.style.display = menu.style.display === 'none' ? 'block' : 'none';
+        });
+
+        console.log('Test page loaded successfully!');
+    </script>
+</body>
+</html>

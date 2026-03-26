@@ -65,9 +65,32 @@ h1, h2, h3, h4, h5, h6 {
     position: fixed;
     top: 0;
     left: 0;
+    right: 0; /* Ensure full width */
     width: 100%;
     padding: 20px 0;
     opacity: 1; /* Ensure visible by default */
+}
+
+.header .navbar {
+    padding: 0;
+    width: 100%;
+}
+
+.header .container {
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    width: 100%;
+    max-width: 1320px;
+    margin: 0 auto;
+    padding: 0 15px;
+    flex-wrap: nowrap !important;
+}
+
+.navbar-brand {
+    flex-shrink: 0;
+    flex-grow: 0;
+    margin-right: auto;
 }
 
 .header.nav-up {
@@ -95,10 +118,20 @@ h1, h2, h3, h4, h5, h6 {
 
 .header .header-tools a {
     color: #fff !important; /* Default white */
+    font-size: 1.1rem;
+    transition: color 0.3s ease;
+}
+
+.header .header-tools a:hover {
+    color: var(--secondary-color) !important;
 }
 
 .header.nav-down .header-tools a {
     color: var(--text-dark) !important;
+}
+
+.header.nav-down .header-tools a:hover {
+    color: var(--secondary-color) !important;
 }
 
 .navbar-brand .logo {
@@ -109,6 +142,22 @@ h1, h2, h3, h4, h5, h6 {
 
 .header.nav-down .navbar-brand .logo {
     height: 55px; /* Slightly smaller on scroll */
+}
+
+/* Header Right Section */
+.header-right {
+    display: flex !important;
+    align-items: center !important;
+    gap: 1.5rem;
+    flex-shrink: 0 !important;
+    flex-grow: 0 !important;
+    margin-left: 0 !important; /* Remove auto, use space-between on parent */
+}
+
+.header-tools {
+    display: flex;
+    align-items: center;
+    gap: 1.2rem;
 }
 
 /* Hamburger Menu Icon */
@@ -126,11 +175,13 @@ h1, h2, h3, h4, h5, h6 {
 
 .menu-text {
     font-family: var(--font-primary);
-    font-weight: 500;
-    font-size: 0.9rem;
+    font-weight: 600;
+    font-size: 0.85rem;
     text-transform: uppercase;
-    letter-spacing: 1px;
+    letter-spacing: 2px;
     color: #fff; /* Default white for Hero */
+    display: block !important; /* Always show */
+    transition: color 0.3s ease;
 }
 
 .hamburger-lines {
@@ -218,12 +269,15 @@ h1, h2, h3, h4, h5, h6 {
     color: var(--text-dark);
     text-decoration: none;
     display: block;
-    transition: color 0.3s ease, transform 0.5s ease;
+    transition: color 0.3s ease, transform 0.5s ease, opacity 0.5s ease;
     transform: translateY(100%);
+    opacity: 0;
 }
 
 .overlay-menu.active .overlay-nav li a {
     transform: translateY(0);
+    opacity: 1;
+    transition-delay: 0.1s;
 }
 
 .overlay-nav li a:hover {
@@ -299,7 +353,7 @@ h1, h2, h3, h4, h5, h6 {
 
 @media (max-width: 991.98px) {
     .hero-title {
-        font-size: 3.5rem;
+        font-size: 4rem;
     }
 }
 
@@ -312,25 +366,66 @@ h1, h2, h3, h4, h5, h6 {
         height: 100%; /* Reduce parallax depth on mobile for better performance */
     }
     .hero-title {
-        font-size: 2.2rem;
-        margin-bottom: 1rem;
+        font-size: 2.5rem;
+        margin-bottom: 0.8rem;
     }
     .hero-tagline {
-        font-size: 0.85rem;
-        letter-spacing: 2px;
+        font-size: 0.75rem;
+        letter-spacing: 4px;
+        margin-bottom: 2rem;
     }
     .hero-cta {
-        padding: 12px 30px !important;
-        font-size: 0.8rem !important;
+        padding: 12px 35px !important;
+        font-size: 0.75rem !important;
+    }
+    
+    /* Ensure navbar stays properly aligned on tablet */
+    .header .container {
+        padding: 0 15px;
+    }
+    
+    .header-right {
+        gap: 1rem;
+    }
+    
+    .navbar-brand .logo {
+        height: 55px;
     }
 }
 
 @media (max-width: 480px) {
     .hero-title {
-        font-size: 1.8rem;
+        font-size: 2rem;
+        line-height: 1.3;
     }
     .hero-title span {
-        display: block; /* Stack words for better fit on small mobile */
+        display: inline; /* Keep inline on small screens */
+    }
+    .hero-tagline {
+        font-size: 0.65rem;
+        letter-spacing: 3px;
+    }
+    
+    /* Navbar adjustments for small screens */
+    .header-tools {
+        gap: 0.8rem;
+    }
+    
+    .header-tools a {
+        font-size: 1rem;
+    }
+    
+    .menu-text {
+        font-size: 0.75rem;
+        letter-spacing: 1.5px;
+    }
+    
+    .hamburger-lines span {
+        width: 20px;
+    }
+    
+    .navbar-brand .logo {
+        height: 50px;
     }
 }
 
@@ -346,12 +441,13 @@ h1, h2, h3, h4, h5, h6 {
 
 .hero-title {
     font-family: var(--font-heading);
-    font-size: 5rem;
-    font-weight: 500; /* Medium weight for cinematic look */
-    margin-bottom: 0.2rem; /* Even smaller margin */
+    font-size: 5.5rem;
+    font-weight: 400; /* Light-medium weight for elegance */
+    margin-bottom: 0.5rem;
     color: var(--secondary-color);
-    letter-spacing: -1px;
+    letter-spacing: 0px;
     opacity: 1; /* Ensure visible by default */
+    line-height: 1.2;
 }
 
 .hero-title span {
@@ -359,12 +455,12 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .hero-tagline {
-    font-size: 1.2rem; /* Larger */
-    letter-spacing: 5px; /* More spacing for elegance */
+    font-size: 1rem;
+    letter-spacing: 8px; /* Extra wide spacing like in reference */
     text-transform: uppercase;
     color: #fff !important;
-    margin-bottom: 2rem; /* More margin to separate from button */
-    font-weight: 400;
+    margin-bottom: 2.5rem; /* More space before button */
+    font-weight: 300;
     opacity: 1; /* Ensure visible by default */
 }
 
@@ -373,13 +469,14 @@ h1, h2, h3, h4, h5, h6 {
     background-color: var(--secondary-color);
     color: var(--primary-color) !important;
     border: none;
-    font-weight: 600;
-    font-size: 0.9rem;
-    text-transform: uppercase;
-    letter-spacing: 1px;
+    font-weight: 500;
+    font-size: 0.875rem;
+    text-transform: capitalize; /* Capitalize instead of uppercase */
+    letter-spacing: 0.5px;
     transition: all 0.3s ease;
     box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
     opacity: 1; /* Ensure visible by default */
+    border-radius: 50px !important; /* Ensure pill shape */
 }
 
 .btn-gold:hover {
@@ -714,7 +811,146 @@ h1, h2, h3, h4, h5, h6 {
 /* Collection Banners */
 .collection-banner {
     width: 100%;
-    aspect-ratio: 16 / 9; /* Untuk banner besar */
+    min-height: 400px;
+    position: relative;
+    overflow: hidden;
+}
+
+.collection-banner img {
+    transition: transform 0.6s ease;
+}
+
+.collection-banner:hover img {
+    transform: scale(1.1);
+}
+
+.banner-overlay {
+    background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.3) 50%, rgba(0,0,0,0.1) 100%);
+}
+
+.bg-gradient-dark {
+    background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.3) 50%, rgba(0,0,0,0.1) 100%);
+}
+
+.hover-scale {
+    transition: transform 0.6s ease;
+}
+
+.hover-scale:hover {
+    transform: scale(1.05);
+}
+
+/* Page Headers */
+.page-header {
+    padding-top: 120px;
+}
+
+/* Shop Sidebar */
+.shop-sidebar {
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+/* Pagination */
+.pagination .page-link {
+    color: var(--text-dark);
+}
+
+.pagination .page-item.active .page-link {
+    background-color: var(--secondary-color);
+    border-color: var(--secondary-color);
+    color: var(--primary-color);
+}
+
+/* Additional Utilities */
+.w-fit {
+    width: fit-content;
+}
+
+.object-fit-cover {
+    object-fit: cover;
+}
+
+.cursor-pointer {
+    cursor: pointer;
+}
+
+.transition-transform {
+    transition: transform 0.3s ease;
+}
+
+.duration-500 {
+    transition-duration: 500ms;
+}
+
+/* Form Styles */
+.form-control:focus,
+.form-select:focus {
+    border-color: var(--secondary-color);
+    box-shadow: 0 0 0 0.2rem rgba(229, 193, 88, 0.25);
+}
+
+/* Button Primary Override */
+.btn-primary {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+    color: #fff;
+}
+
+.btn-primary:hover {
+    background-color: #0a2d2c;
+    border-color: #0a2d2c;
+}
+
+.btn-outline-light:hover {
+    background-color: var(--secondary-color);
+    border-color: var(--secondary-color);
+    color: var(--text-dark);
+}
+
+/* ============================================
+   FORCE VISIBILITY - Critical Override
+   ============================================ */
+/* Ensure all hero elements are ALWAYS visible */
+.hero-title,
+.hero-title span,
+.hero-tagline,
+.hero-cta,
+.btn-gold,
+.hero-navigation,
+.header,
+.navbar-brand,
+.navbar-brand .logo,
+.menu-toggle,
+.header-tools {
+    opacity: 1 !important;
+    visibility: visible !important;
+    display: flex !important; /* For flex containers */
+}
+
+.hero-title span {
+    display: inline-block !important; /* Specific for span */
+}
+
+.btn-gold {
+    display: inline-block !important; /* For button */
+}
+
+/* Ensure hero content is visible */
+.hero-section,
+.hero-bg,
+.hero-overlay,
+.hero-content-wrapper {
+    opacity: 1 !important;
+    visibility: visible !important;
+}
+
+/* Make sure logo is visible */
+.header .navbar-brand .logo {
+    display: block !important;
+    opacity: 1 !important;
+    visibility: visible !important;
 }
 
 .col-lg-6 .collection-banner {

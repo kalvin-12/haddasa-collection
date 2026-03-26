@@ -1,13 +1,16 @@
 // Initialize GSAP ScrollTrigger
-gsap.registerPlugin(ScrollTrigger);
+if (typeof gsap !== 'undefined') {
+    gsap.registerPlugin(ScrollTrigger);
+}
 
 document.addEventListener("DOMContentLoaded", function() {
+    console.log('Script loaded successfully!');
 
     // --- Custom Cursor ---
     const cursor = document.getElementById('magic-cursor');
     const ball = document.getElementById('ball');
 
-    if (window.innerWidth >= 992) {
+    if (window.innerWidth >= 992 && typeof gsap !== 'undefined') {
         document.addEventListener('mousemove', function(e) {
             gsap.to(cursor, {
                 duration: 0.3,
@@ -40,130 +43,184 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 
     // --- Hero Animations ---
-    const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
-    
-    // Use from() instead of set+to so elements are visible by default
-    tl.from(".hero-title span", { 
-          y: 30,
-          opacity: 0, 
-          duration: 1.2, 
-          stagger: 0.1,
-          ease: "power4.out"
-      }, "+=0.3")
-      .from(".hero-tagline", { y: 30, opacity: 0, duration: 1 }, "-=0.8")
-      .from(".hero-cta", { y: 30, opacity: 0, duration: 0.8 }, "-=0.6")
-      .from(".hero-navigation", { opacity: 0, y: 30, duration: 0.8 }, "-=0.4")
-      .from(".header", { y: -80, opacity: 0, duration: 1 }, "-=1.2");
+    // ANIMATIONS COMPLETELY DISABLED for maximum visibility
+    // All hero elements will display immediately without any animation
+    // Uncomment below if you want to re-enable animations later
+    /*
+    if (typeof gsap !== 'undefined') {
+        try {
+            const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
+            tl.from(".hero-title span", { y: 30, duration: 1.2, stagger: 0.1, ease: "power4.out" }, "+=0.3")
+              .from(".hero-tagline", { y: 30, duration: 1 }, "-=0.8")
+              .from(".hero-cta", { y: 30, duration: 0.8 }, "-=0.6")
+              .from(".hero-navigation", { y: 30, duration: 0.8 }, "-=0.4")
+              .from(".header", { y: -80, duration: 1 }, "-=1.2");
+        } catch (error) {
+            console.log('GSAP animation error:', error);
+        }
+    }
+    */
+    console.log('Hero section loaded - all elements should be visible');
+
+    // --- Navbar Animations ---
+    if (typeof gsap !== 'undefined') {
+        try {
+            // Animate navbar elements
+            gsap.from(".navbar-brand", {
+                x: -50,
+                opacity: 0,
+                duration: 0.8,
+                ease: "power3.out",
+                delay: 0.2
+            });
+            
+            gsap.from(".header-tools a", {
+                y: -20,
+                opacity: 0,
+                duration: 0.6,
+                stagger: 0.1,
+                ease: "power3.out",
+                delay: 0.5
+            });
+            
+            gsap.from(".menu-toggle", {
+                x: 50,
+                opacity: 0,
+                duration: 0.8,
+                ease: "power3.out",
+                delay: 0.7
+            });
+        } catch (error) {
+            console.log('Navbar animation error:', error);
+        }
+    }
 
     // Hero Parallax
-    if (window.innerWidth > 768) {
-        gsap.to(".hero-bg", {
-            yPercent: 20,
-            ease: "none",
-            scrollTrigger: {
-                trigger: ".hero-section",
-                start: "top top",
-                end: "bottom top",
-                scrub: true
-            }
-        });
+    if (window.innerWidth > 768 && typeof gsap !== 'undefined') {
+        try {
+            gsap.to(".hero-bg", {
+                yPercent: 20,
+                ease: "none",
+                scrollTrigger: {
+                    trigger: ".hero-section",
+                    start: "top top",
+                    end: "bottom top",
+                    scrub: true
+                }
+            });
+        } catch (error) {
+            console.log('Hero parallax error:', error);
+        }
     }
 
     // --- Section Animations ---
-    const sections = document.querySelectorAll('section');
-    sections.forEach(section => {
-        const bgText = section.querySelector('.section-bg-text');
-        const title = section.querySelector('.section-title');
-        
-        if (bgText) {
-            gsap.from(bgText, {
-                scrollTrigger: {
-                    trigger: section,
-                    start: 'top 80%',
-                    end: 'bottom 20%',
-                    scrub: 1
-                },
-                x: -100,
-                opacity: 0,
-                duration: 2
-            });
-        }
+    if (typeof gsap !== 'undefined') {
+        try {
+            const sections = document.querySelectorAll('section');
+            sections.forEach(section => {
+                const bgText = section.querySelector('.section-bg-text');
+                const title = section.querySelector('.section-title');
+                
+                if (bgText) {
+                    gsap.from(bgText, {
+                        scrollTrigger: {
+                            trigger: section,
+                            start: 'top 80%',
+                            end: 'bottom 20%',
+                            scrub: 1
+                        },
+                        x: -100,
+                        duration: 2
+                    });
+                }
 
-        if (title && !section.classList.contains('hero-section')) {
-            gsap.from(title, {
-                scrollTrigger: {
-                    trigger: section,
-                    start: 'top 85%',
-                    toggleActions: 'play none none none'
-                },
-                y: 50,
-                opacity: 0,
-                duration: 1,
-                ease: 'power2.out'
+                if (title && !section.classList.contains('hero-section')) {
+                    gsap.from(title, {
+                        scrollTrigger: {
+                            trigger: section,
+                            start: 'top 85%',
+                            toggleActions: 'play none none none'
+                        },
+                        y: 50,
+                        duration: 1,
+                        ease: 'power2.out'
+                    });
+                }
             });
+        } catch (error) {
+            console.log('Section animations error:', error);
         }
-    });
+    }
 
     // --- Product Cards Animation ---
-    gsap.utils.toArray(".product-card").forEach((card, i) => {
-        gsap.from(card, {
-            scrollTrigger: {
-                trigger: card,
-                start: "top 85%",
-                toggleActions: "play none none none"
-            },
-            y: 60,
-            opacity: 0,
-            duration: 0.7,
-            delay: (i % 3) * 0.12
-        });
+    if (typeof gsap !== 'undefined' && gsap.utils) {
+        try {
+            gsap.utils.toArray(".product-card").forEach((card, i) => {
+                gsap.from(card, {
+                    scrollTrigger: {
+                        trigger: card,
+                        start: "top 85%",
+                        toggleActions: "play none none none"
+                    },
+                    y: 60,
+                    duration: 0.7,
+                    delay: (i % 3) * 0.12
+                });
 
-        // 3D Tilt Effect on Hover
-        card.addEventListener("mousemove", (e) => {
-            const rect = card.getBoundingClientRect();
-            const x = e.clientX - rect.left;
-            const y = e.clientY - rect.top;
-            const centerX = rect.width / 2;
-            const centerY = rect.height / 2;
-            const rotateX = (y - centerY) / 10;
-            const rotateY = (centerX - x) / 10;
+                // 3D Tilt Effect on Hover
+                card.addEventListener("mousemove", (e) => {
+                    const rect = card.getBoundingClientRect();
+                    const x = e.clientX - rect.left;
+                    const y = e.clientY - rect.top;
+                    const centerX = rect.width / 2;
+                    const centerY = rect.height / 2;
+                    const rotateX = (y - centerY) / 10;
+                    const rotateY = (centerX - x) / 10;
 
-            gsap.to(card, {
-                rotateX: rotateX,
-                rotateY: rotateY,
-                scale: 1.05,
-                duration: 0.5,
-                ease: "power2.out",
-                perspective: 1000
+                    gsap.to(card, {
+                        rotateX: rotateX,
+                        rotateY: rotateY,
+                        scale: 1.05,
+                        duration: 0.5,
+                        ease: "power2.out",
+                        perspective: 1000
+                    });
+                });
+
+                card.addEventListener("mouseleave", () => {
+                    gsap.to(card, {
+                        rotateX: 0,
+                        rotateY: 0,
+                        scale: 1,
+                        duration: 0.5,
+                        ease: "power2.out"
+                    });
+                });
             });
-        });
-
-        card.addEventListener("mouseleave", () => {
-            gsap.to(card, {
-                rotateX: 0,
-                rotateY: 0,
-                scale: 1,
-                duration: 0.5,
-                ease: "power2.out"
-            });
-        });
-    });
+        } catch (error) {
+            console.log('Product cards animation error:', error);
+        }
+    }
 
     // --- Infinite Marquee ---
     const tickerWrapper = document.querySelector('.ticker-wrapper');
     const tickerContent = document.querySelector('.ticker-content');
     
-    if (tickerWrapper && tickerContent) {
-        // Clone content for seamless loop
-        const clone = tickerContent.cloneNode(true);
-        tickerWrapper.appendChild(clone);
+    if (tickerWrapper && tickerContent && typeof gsap !== 'undefined') {
+        try {
+            // Clone content for seamless loop
+            const clone = tickerContent.cloneNode(true);
+            tickerWrapper.appendChild(clone);
 
-        gsap.to([tickerContent, clone], {
-            xPercent: -100,
-            repeat: -1,
-            duration: 20,
-            ease: "none"
-        });
+            gsap.to([tickerContent, clone], {
+                xPercent: -100,
+                repeat: -1,
+                duration: 20,
+                ease: "none"
+            });
+        } catch (error) {
+            console.log('Marquee animation error:', error);
+        }
     }
 
     // --- Smooth Scrolling for anchor links ---
@@ -222,10 +279,17 @@ document.addEventListener("DOMContentLoaded", function() {
             overlayMenu.classList.toggle('active');
             
             if (overlayMenu.classList.contains('active')) {
-                gsap.fromTo(overlayLinks, 
-                    { y: 100, opacity: 0 }, 
-                    { y: 0, opacity: 1, duration: 0.6, stagger: 0.1, ease: "power3.out", delay: 0.2 }
-                );
+                // Animate menu items with GSAP or fallback to CSS
+                if (typeof gsap !== 'undefined') {
+                    try {
+                        gsap.fromTo(overlayLinks, 
+                            { y: 100, opacity: 0 }, 
+                            { y: 0, opacity: 1, duration: 0.6, stagger: 0.1, ease: "power3.out", delay: 0.2 }
+                        );
+                    } catch (error) {
+                        console.log('Menu animation error:', error);
+                    }
+                }
                 document.body.style.overflow = 'hidden'; // Prevent scrolling
             } else {
                 document.body.style.overflow = ''; // Allow scrolling
