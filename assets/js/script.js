@@ -180,31 +180,26 @@ document.addEventListener("DOMContentLoaded", function() {
     let lastScrollTop = 0;
     const header = document.querySelector('.header');
     const delta = 5;
-    const navbarHeight = header.offsetHeight;
 
     window.addEventListener('scroll', function() {
         let st = window.pageYOffset;
         
         if (Math.abs(lastScrollTop - st) <= delta) return;
 
-        if (st > lastScrollTop && st > navbarHeight) {
-            // Scroll Down - Hide Navbar
+        if (st > lastScrollTop) {
+            // Scroll Down - Hide EVERYTHING (Logo & Menu Button)
             header.classList.remove('nav-down');
             header.classList.add('nav-up');
         } else {
-            // Scroll Up - Show Navbar with background
+            // Scroll Up - Show EVERYTHING
             if (st + window.innerHeight < document.body.scrollHeight) {
                 header.classList.remove('nav-up');
-                if (st > 50) {
-                    header.classList.add('nav-down');
-                } else {
-                    header.classList.remove('nav-down');
-                }
+                header.classList.add('nav-down');
             }
         }
         
-        // At the very top - Keep it transparent
-        if (st <= 50) {
+        // At the very top - hide it if just arrived, or show only when scrolling up
+        if (st <= 0) {
             header.classList.remove('nav-up');
             header.classList.remove('nav-down');
         }
