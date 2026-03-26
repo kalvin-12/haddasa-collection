@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Haddasa Collection | Home</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body class="bg-light">
+
+    <!-- Custom Cursor -->
+    <div id="magic-cursor">
+        <div id="ball"></div>
+    </div>
+
+    <!-- Header / Navbar -->
+    <header class="header">
+        <nav class="navbar navbar-expand-lg">
+            <div class="container">
+                <a class="navbar-brand" href="index.html">
+                    <img src="assets/img/logo.png" alt="Haddasa Logo" class="logo">
+                </a>
+                
+                <div class="header-right d-flex align-items-center gap-3">
+                    <div class="header-tools d-none d-lg-flex gap-3">
+                        <a href="#" class="search-btn text-dark"><i class="fa-solid fa-magnifying-glass"></i></a>
+                        <a href="#" class="cart-btn text-dark"><i class="fa-solid fa-bag-shopping"></i></a>
+                    </div>
+                    <!-- Hamburger Menu Toggle -->
+                    <button class="menu-toggle" id="menuToggle">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Fullscreen Overlay Menu -->
+    <div class="overlay-menu" id="overlayMenu">
+        <div class="overlay-menu-content">
+            <ul class="overlay-nav">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="shop.html">Shop</a></li>
+                <li><a href="collections.html">Collections Series</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <main id="main-content">
+        <!-- Hero Section -->
+        <section class="hero-section position-relative">
+            <div class="hero-bg" style="background-image: url('assets/img/pexels-betusmusum-6594342.png');"></div>
+            <div class="hero-overlay">
+            </div>
+            <div class="container h-100 d-flex flex-column justify-content-center align-items-center text-center text-white">
+                <h1 class="hero-title gsap-reveal-text">New Swarovski Collections</h1>
+                <p class="hero-subtitle gsap-reveal-text">Elegance in every stitch</p>
+                <a href="shop.html" class="btn btn-outline-light mt-4 px-5 py-3 rounded-pill gsap-reveal-text">See All Collections</a>
+            </div>
+        </section>
+
+        <!-- Categories Section -->
+        <section class="categories-section py-5">
+            <div class="container">
+                <div class="section-title-wrapper text-center mb-5">
+                    <h2 class="section-bg-text">Categories</h2>
+                    <h2 class="section-title">Categories</h2>
+                </div>
+                <div class="row g-4 mt-4">
+                    <div class="col-md-4">
+                        <div class="category-card">
+                            <div class="category-img-wrapper">
+                                <img src="assets/img/image-473.png" alt="Scarf" class="category-img">
+                                <div class="category-overlay">
+                                    <h3>Scarf</h3>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="category-card active">
+                            <div class="category-img-wrapper">
+                                <img src="assets/img/image-471.png" alt="Abaya" class="category-img">
+                                <div class="category-overlay">
+                                    <h3>Abaya</h3>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="category-card">
+                            <div class="category-img-wrapper">
+                                <img src="assets/img/pexels-pavel-danilyuk-8422445.png" alt="Dress" class="category-img">
+                                <div class="category-overlay">
+                                    <h3>Dress</h3>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Bundling Promo Section -->
+        <section class="bundling-section py-5 text-white text-center position-relative">
+            <div class="bundling-bg" style="background-image: url('assets/img/image-471.png');"></div>
+            <div class="container">
+                <h2 class="section-bg-text light">Bundling Promo</h2>
+                <h2 class="section-title mb-4">Bundling Promo</h2>
+                <a href="shop.html" class="btn btn-primary px-5 py-2 rounded-pill">See the Bundling Collection</a>
+            </div>
+        </section>
+
+        <!-- New Products Section -->
+        <section class="new-products py-5">
+            <div class="container">
+                <div class="section-title-wrapper text-center mb-5">
+                    <h2 class="section-bg-text">New Products</h2>
+                    <h2 class="section-title">New Products</h2>
+                </div>
+                <div class="row g-4 mt-4">
+                    <!-- Product 1 -->
+                    <div class="col-md-4">
+                        <div class="product-card">
+                            <div class="product-img-wrapper">
+                                <img src="assets/img/image-468.png" alt="Product" class="product-img">
+                            </div>
+                            <div class="product-info mt-3">
+                                <h5>Gamis Shinar Vol 2 Pink - Gamis Rayon</h5>
+                                <p class="text-muted">Rp 300.000</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Product 2 -->
+                    <div class="col-md-4">
+                        <div class="product-card">
+                            <div class="product-img-wrapper">
+                                <img src="assets/img/image-471.png" alt="Product" class="product-img">
+                            </div>
+                            <div class="product-info mt-3">
+                                <h5>Gamis Embroided Mix Brukat</h5>
+                                <p class="text-muted">Rp 450.000</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Product 3 -->
+                    <div class="col-md-4">
+                        <div class="product-card">
+                            <div class="product-img-wrapper">
+                                <img src="assets/img/pexels-pavel-danilyuk-8422445.png" alt="Product" class="product-img">
+                            </div>
+                            <div class="product-info mt-3">
+                                <h5>Abaya Daily Basic - Syari Madu</h5>
+                                <p class="text-muted">Rp 250.000</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- More products... -->
+                </div>
+                <div class="text-center mt-5">
+                    <a href="shop.html" class="btn btn-dark px-5 py-2 rounded-pill">See All Collections</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Scrolling Ticker -->
+        <section class="ticker-section py-4 bg-dark text-white overflow-hidden">
+            <div class="ticker-wrapper">
+                <div class="ticker-content">
+                    <span>Create Something Together - Let's Create Something Together - Let's Create Something Together - Let's Create Something Together - </span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Best Collections Section -->
+        <section class="best-collections py-5">
+            <div class="container">
+                <div class="section-title-wrapper text-center mb-5">
+                    <h2 class="section-bg-text">Best Collections</h2>
+                    <h2 class="section-title">Best Collections</h2>
+                </div>
+                <div class="row g-4 mt-4">
+                    <div class="col-md-4">
+                        <div class="product-card">
+                            <img src="assets/img/image-468.png" alt="Product" class="img-fluid rounded">
+                            <div class="product-info mt-3">
+                                <h5>Gamis Shinar Vol 2 Pink</h5>
+                                <p class="text-muted">Rp 300.000</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="product-card">
+                            <img src="assets/img/image-471.png" alt="Product" class="img-fluid rounded">
+                            <div class="product-info mt-3">
+                                <h5>Gamis Sabilla</h5>
+                                <p class="text-muted">Rp 350.000</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="product-card">
+                            <img src="assets/img/pexels-pavel-danilyuk-8422445.png" alt="Product" class="img-fluid rounded">
+                            <div class="product-info mt-3">
+                                <h5>Gamis Embroided Mix Brukat</h5>
+                                <p class="text-muted">Rp 450.000</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="text-center mt-5">
+                    <a href="shop.html" class="btn btn-dark px-5 py-2 rounded-pill">See All Collections</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Drop Us A Line Section (Footer Contact) -->
+        <section class="contact-footer py-5 bg-white">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-5">
+                        <p class="text-muted small">Get In Touch</p>
+                        <h2 class="display-5 fw-bold mb-4">Drop Us <br> A Line</h2>
+                        <ul class="list-unstyled contact-info">
+                            <li><i class="fa-solid fa-location-dot me-2"></i> Jl. Gading Mas 1 Blok J3 No. 1, Jakarta</li>
+                            <li><i class="fa-solid fa-phone me-2"></i> +62 812-3456-7890</li>
+                            <li><i class="fa-solid fa-envelope me-2"></i> contact@haddasa.com</li>
+                        </ul>
+                        <div class="social-links mt-4">
+                            <a href="#" class="me-3 text-dark"><i class="fa-brands fa-facebook-f"></i></a>
+                            <a href="#" class="me-3 text-dark"><i class="fa-brands fa-instagram"></i></a>
+                            <a href="#" class="me-3 text-dark"><i class="fa-brands fa-tiktok"></i></a>
+                            <a href="#" class="me-3 text-dark"><i class="fa-brands fa-youtube"></i></a>
+                        </div>
+                    </div>
+                    <div class="col-md-7">
+                        <form id="contact-form" class="row g-3">
+                            <div class="col-md-6">
+                                <label class="form-label">Name*</label>
+                                <input type="text" class="form-control" placeholder="Enter your name">
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">Email address*</label>
+                                <input type="email" class="form-control" placeholder="Enter your email">
+                            </div>
+                            <div class="col-12">
+                                <label class="form-label">Subject*</label>
+                                <input type="text" class="form-control" placeholder="What is this about?">
+                            </div>
+                            <div class="col-12">
+                                <label class="form-label">Select an option*</label>
+                                <select class="form-select">
+                                    <option selected>Please choose an option</option>
+                                    <option value="1">Order Inquiry</option>
+                                    <option value="2">Product Information</option>
+                                    <option value="3">Other</option>
+                                </select>
+                            </div>
+                            <div class="col-12">
+                                <label class="form-label">Message*</label>
+                                <textarea class="form-control" rows="4" placeholder="How can we help?"></textarea>
+                            </div>
+                            <div class="col-12 mt-4">
+                                <button type="submit" class="btn btn-outline-dark rounded-pill px-5">Send Message</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer py-4 bg-light border-top">
+        <div class="container text-center">
+            <p class="mb-0">&copy; 2024 Haddasa Collection. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- GSAP & Plugins -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/TextPlugin.min.js"></script>
+    <!-- Custom JS -->
+    <script src="assets/js/script.js"></script>
+</body>
+</html>

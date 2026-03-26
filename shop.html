@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Haddasa Collection | Shop</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body class="bg-light">
+
+    <!-- Custom Cursor -->
+    <div id="magic-cursor">
+        <div id="ball"></div>
+    </div>
+
+    <!-- Header / Navbar -->
+    <header class="header">
+        <nav class="navbar navbar-expand-lg">
+            <div class="container">
+                <a class="navbar-brand" href="index.html">
+                    <img src="assets/img/logo.png" alt="Haddasa Logo" class="logo">
+                </a>
+                
+                <div class="header-right d-flex align-items-center gap-3">
+                    <div class="header-tools d-none d-lg-flex gap-3">
+                        <a href="#" class="search-btn text-dark"><i class="fa-solid fa-magnifying-glass"></i></a>
+                        <a href="#" class="cart-btn text-dark"><i class="fa-solid fa-bag-shopping"></i></a>
+                    </div>
+                    <!-- Hamburger Menu Toggle -->
+                    <button class="menu-toggle" id="menuToggle">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Fullscreen Overlay Menu -->
+    <div class="overlay-menu" id="overlayMenu">
+        <div class="overlay-menu-content">
+            <ul class="overlay-nav">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="shop.html">Shop</a></li>
+                <li><a href="collections.html">Collections Series</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <main id="main-content">
+        <!-- Shop Header -->
+        <section class="page-header py-5 bg-white border-bottom">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-md-6">
+                        <h1 class="display-4 fw-bold">Shop</h1>
+                        <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb mb-0">
+                                <li class="breadcrumb-item"><a href="index.html" class="text-decoration-none text-muted">Home</a></li>
+                                <li class="breadcrumb-item active" aria-current="page">Shop</li>
+                            </ol>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Shop Content -->
+        <section class="shop-section py-5">
+            <div class="container">
+                <div class="row g-4">
+                    <!-- Sidebar Filters -->
+                    <div class="col-lg-3">
+                        <div class="shop-sidebar sticky-top" style="top: 100px;">
+                            <div class="filter-group mb-4">
+                                <h5 class="mb-3">Categories</h5>
+                                <ul class="list-unstyled">
+                                    <li class="mb-2"><a href="#" class="text-decoration-none text-dark d-flex justify-content-between">Abaya <span>(12)</span></a></li>
+                                    <li class="mb-2"><a href="#" class="text-decoration-none text-dark d-flex justify-content-between">Gamis <span>(24)</span></a></li>
+                                    <li class="mb-2"><a href="#" class="text-decoration-none text-dark d-flex justify-content-between">Scarf <span>(18)</span></a></li>
+                                    <li class="mb-2"><a href="#" class="text-decoration-none text-dark d-flex justify-content-between">Accessories <span>(5)</span></a></li>
+                                </ul>
+                            </div>
+                            <div class="filter-group mb-4">
+                                <h5 class="mb-3">Filter by Price</h5>
+                                <input type="range" class="form-range" min="0" max="1000000" id="priceRange">
+                                <div class="d-flex justify-content-between mt-2">
+                                    <span>Rp 0</span>
+                                    <span>Rp 1.000.000</span>
+                                </div>
+                            </div>
+                            <div class="filter-group">
+                                <h5 class="mb-3">Colors</h5>
+                                <div class="d-flex gap-2">
+                                    <div class="color-swatch bg-dark rounded-circle" style="width: 25px; height: 25px; cursor: pointer;"></div>
+                                    <div class="color-swatch bg-secondary rounded-circle" style="width: 25px; height: 25px; cursor: pointer;"></div>
+                                    <div class="color-swatch bg-white border rounded-circle" style="width: 25px; height: 25px; cursor: pointer;"></div>
+                                    <div class="color-swatch bg-primary rounded-circle" style="width: 25px; height: 25px; cursor: pointer;"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Product Grid -->
+                    <div class="col-lg-9">
+                        <div class="d-flex justify-content-between align-items-center mb-4">
+                            <p class="mb-0 text-muted">Showing 1-9 of 45 results</p>
+                            <select class="form-select w-auto">
+                                <option selected>Default sorting</option>
+                                <option value="1">Sort by popularity</option>
+                                <option value="2">Sort by latest</option>
+                                <option value="3">Sort by price: low to high</option>
+                                <option value="4">Sort by price: high to low</option>
+                            </select>
+                        </div>
+                        <div class="row g-4">
+                            <!-- Repeat product card -->
+                            <div class="col-md-4">
+                                <a href="shop-details.html" class="text-decoration-none text-dark">
+                                    <div class="product-card">
+                                        <div class="product-img-wrapper">
+                                            <img src="assets/img/image-468.png" alt="Product" class="product-img">
+                                        </div>
+                                        <div class="product-info mt-3">
+                                            <h5>Gamis Shinar Vol 2 Pink</h5>
+                                            <p class="text-muted">Rp 300.000</p>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                            <!-- Product 2 -->
+                            <div class="col-md-4">
+                                <a href="shop-details.html" class="text-decoration-none text-dark">
+                                    <div class="product-card">
+                                        <div class="product-img-wrapper">
+                                            <img src="assets/img/image-471.png" alt="Product" class="product-img">
+                                        </div>
+                                        <div class="product-info mt-3">
+                                            <h5>Gamis Embroided Mix Brukat</h5>
+                                            <p class="text-muted">Rp 450.000</p>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                            <!-- Product 3 -->
+                            <div class="col-md-4">
+                                <a href="shop-details.html" class="text-decoration-none text-dark">
+                                    <div class="product-card">
+                                        <div class="product-img-wrapper">
+                                            <img src="assets/img/pexels-pavel-danilyuk-8422445.png" alt="Product" class="product-img">
+                                        </div>
+                                        <div class="product-info mt-3">
+                                            <h5>Abaya Daily Basic - Syari Madu</h5>
+                                            <p class="text-muted">Rp 250.000</p>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                            <!-- Add more products as needed -->
+                             <div class="col-md-4">
+                                <a href="shop-details.html" class="text-decoration-none text-dark">
+                                    <div class="product-card">
+                                        <div class="product-img-wrapper">
+                                            <img src="assets/img/image-469.png" alt="Product" class="product-img">
+                                        </div>
+                                        <div class="product-info mt-3">
+                                            <h5>Gamis Shinar Vol 2 Pink</h5>
+                                            <p class="text-muted">Rp 300.000</p>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="col-md-4">
+                                <a href="shop-details.html" class="text-decoration-none text-dark">
+                                    <div class="product-card">
+                                        <div class="product-img-wrapper">
+                                            <img src="assets/img/image-470.png" alt="Product" class="product-img">
+                                        </div>
+                                        <div class="product-info mt-3">
+                                            <h5>Gamis Embroided Mix Brukat</h5>
+                                            <p class="text-muted">Rp 450.000</p>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="col-md-4">
+                                <a href="shop-details.html" class="text-decoration-none text-dark">
+                                    <div class="product-card">
+                                        <div class="product-img-wrapper">
+                                            <img src="assets/img/image-472.png" alt="Product" class="product-img">
+                                        </div>
+                                        <div class="product-info mt-3">
+                                            <h5>Abaya Daily Basic - Syari Madu</h5>
+                                            <p class="text-muted">Rp 250.000</p>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                        
+                        <!-- Pagination -->
+                        <nav class="mt-5">
+                            <ul class="pagination justify-content-center">
+                                <li class="page-item disabled"><a class="page-link border-0 bg-transparent text-dark" href="#"><i class="fa-solid fa-chevron-left"></i></a></li>
+                                <li class="page-item active"><a class="page-link border-0 bg-transparent" href="#">1</a></li>
+                                <li class="page-item"><a class="page-link border-0 bg-transparent text-dark" href="#">2</a></li>
+                                <li class="page-item"><a class="page-link border-0 bg-transparent text-dark" href="#">3</a></li>
+                                <li class="page-item"><a class="page-link border-0 bg-transparent text-dark" href="#"><i class="fa-solid fa-chevron-right"></i></a></li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer py-4 bg-white border-top">
+        <div class="container text-center">
+            <p class="mb-0">&copy; 2024 Haddasa Collection. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- GSAP & Plugins -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <!-- Custom JS -->
+    <script src="assets/js/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Haddasa Collection | Shop Details</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body class="bg-light">
+
+    <!-- Custom Cursor -->
+    <div id="magic-cursor">
+        <div id="ball"></div>
+    </div>
+
+    <!-- Header / Navbar -->
+    <header class="header">
+        <nav class="navbar navbar-expand-lg">
+            <div class="container">
+                <a class="navbar-brand" href="index.html">
+                    <img src="assets/img/logo.png" alt="Haddasa Logo" class="logo">
+                </a>
+                
+                <div class="header-right d-flex align-items-center gap-3">
+                    <div class="header-tools d-none d-lg-flex gap-3">
+                        <a href="#" class="search-btn text-dark"><i class="fa-solid fa-magnifying-glass"></i></a>
+                        <a href="#" class="cart-btn text-dark"><i class="fa-solid fa-bag-shopping"></i></a>
+                    </div>
+                    <!-- Hamburger Menu Toggle -->
+                    <button class="menu-toggle" id="menuToggle">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Fullscreen Overlay Menu -->
+    <div class="overlay-menu" id="overlayMenu">
+        <div class="overlay-menu-content">
+            <ul class="overlay-nav">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="shop.html">Shop</a></li>
+                <li><a href="collections.html">Collections Series</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <main id="main-content">
+        <!-- Breadcrumbs -->
+        <nav class="py-3 bg-white border-bottom">
+            <div class="container">
+                <ol class="breadcrumb mb-0">
+                    <li class="breadcrumb-item"><a href="index.html" class="text-decoration-none text-muted">Home</a></li>
+                    <li class="breadcrumb-item"><a href="shop.html" class="text-decoration-none text-muted">Shop</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Gamis Shinar Vol 2 Pink</li>
+                </ol>
+            </div>
+        </nav>
+
+        <!-- Product Details Section -->
+        <section class="product-details py-5">
+            <div class="container">
+                <div class="row g-5">
+                    <!-- Product Gallery -->
+                    <div class="col-lg-6">
+                        <div class="row g-3">
+                            <div class="col-12">
+                                <div class="main-img rounded overflow-hidden">
+                                    <img src="assets/img/image-468.png" alt="Product Main" class="img-fluid w-100">
+                                </div>
+                            </div>
+                            <div class="col-3">
+                                <img src="assets/img/image-468.png" alt="Thumb" class="img-fluid rounded cursor-pointer opacity-50">
+                            </div>
+                            <div class="col-3">
+                                <img src="assets/img/image-471.png" alt="Thumb" class="img-fluid rounded cursor-pointer">
+                            </div>
+                            <div class="col-3">
+                                <img src="assets/img/pexels-pavel-danilyuk-8422445.png" alt="Thumb" class="img-fluid rounded cursor-pointer">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Product Info -->
+                    <div class="col-lg-6">
+                        <div class="product-meta mb-2">
+                            <span class="badge bg-primary rounded-pill">In Stock</span>
+                            <span class="text-muted ms-2">SKU: HD-001</span>
+                        </div>
+                        <h1 class="display-5 fw-bold mb-3">Gamis Shinar Vol 2 Pink</h1>
+                        <h2 class="text-primary mb-4">Rp 300.000</h2>
+                        
+                        <div class="product-description mb-4">
+                            <p class="text-muted">Gamis Rayon premium dengan detail yang elegan dan nyaman dipakai sehari-hari. Bahan rayon yang adem dan jatuh memberikan kesan mewah namun tetap santai.</p>
+                        </div>
+
+                        <div class="product-options mb-4">
+                            <div class="mb-3">
+                                <label class="form-label fw-bold">Size</label>
+                                <div class="d-flex gap-2">
+                                    <button class="btn btn-outline-dark px-3">S</button>
+                                    <button class="btn btn-dark px-3">M</button>
+                                    <button class="btn btn-outline-dark px-3">L</button>
+                                    <button class="btn btn-outline-dark px-3">XL</button>
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label fw-bold">Quantity</label>
+                                <div class="input-group" style="width: 120px;">
+                                    <button class="btn btn-outline-dark" type="button">-</button>
+                                    <input type="text" class="form-control text-center" value="1">
+                                    <button class="btn btn-outline-dark" type="button">+</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="d-grid gap-2 d-md-flex mb-4">
+                            <button class="btn btn-primary px-5 py-3 rounded-pill flex-grow-1"><i class="fa-solid fa-cart-plus me-2"></i> Add to Cart</button>
+                            <button class="btn btn-outline-dark px-4 py-3 rounded-pill"><i class="fa-regular fa-heart"></i></button>
+                        </div>
+
+                        <div class="product-extra-info border-top pt-4">
+                            <ul class="list-unstyled">
+                                <li class="mb-2"><strong>Category:</strong> Gamis, Best Seller</li>
+                                <li class="mb-2"><strong>Tags:</strong> Pink, Rayon, Shinar</li>
+                                <li class="mb-2"><strong>Share:</strong> 
+                                    <a href="#" class="ms-2 text-dark"><i class="fa-brands fa-facebook-f"></i></a>
+                                    <a href="#" class="ms-2 text-dark"><i class="fa-brands fa-instagram"></i></a>
+                                    <a href="#" class="ms-2 text-dark"><i class="fa-brands fa-whatsapp"></i></a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tabs Section -->
+                <div class="product-tabs mt-5 pt-5">
+                    <ul class="nav nav-tabs justify-content-center" id="productTab" role="tablist">
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link active border-0 bg-transparent fw-bold" id="desc-tab" data-bs-toggle="tab" data-bs-target="#desc" type="button" role="tab">Description</button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link border-0 bg-transparent fw-bold" id="info-tab" data-bs-toggle="tab" data-bs-target="#info" type="button" role="tab">Additional Info</button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link border-0 bg-transparent fw-bold" id="review-tab" data-bs-toggle="tab" data-bs-target="#review" type="button" role="tab">Reviews (2)</button>
+                        </li>
+                    </ul>
+                    <div class="tab-content py-4" id="productTabContent">
+                        <div class="tab-pane fade show active text-center mx-auto" id="desc" role="tabpanel" style="max-width: 800px;">
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum sed eros sit amet nunc ultrices accumsan. Nullam quis mi et ex elementum varius. Proin at sem eu enim iaculis aliquet.</p>
+                        </div>
+                        <div class="tab-pane fade text-center" id="info" role="tabpanel">
+                            <p>Weight: 0.5kg<br>Dimensions: 30 x 20 x 5 cm</p>
+                        </div>
+                        <div class="tab-pane fade text-center" id="review" role="tabpanel">
+                            <p>No reviews yet.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Related Products -->
+        <section class="related-products py-5 bg-white">
+            <div class="container">
+                <h2 class="text-center mb-5">You May Also Like</h2>
+                <div class="row g-4">
+                    <!-- Related Product 1 -->
+                    <div class="col-md-3">
+                        <div class="product-card">
+                            <img src="assets/img/image-471.png" alt="Product" class="img-fluid rounded">
+                            <div class="product-info mt-3 text-center">
+                                <h5>Gamis Sabilla</h5>
+                                <p class="text-muted">Rp 350.000</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Related Product 2 -->
+                    <div class="col-md-3">
+                        <div class="product-card">
+                            <img src="assets/img/pexels-pavel-danilyuk-8422445 1.png" alt="Product" class="img-fluid rounded">
+                            <div class="product-info mt-3 text-center">
+                                <h5>Abaya Daily Basic</h5>
+                                <p class="text-muted">Rp 250.000</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer py-4 bg-light border-top">
+        <div class="container text-center">
+            <p class="mb-0">&copy; 2024 Haddasa Collection. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- GSAP & Plugins -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <!-- Custom JS -->
+    <script src="assets/js/script.js"></script>
+</body>
+</html>
